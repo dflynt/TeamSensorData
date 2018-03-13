@@ -37,4 +37,4 @@ def run():
         print("There was an issue with reading in the data from rachel.py...")
 
 # Comment out when not using
-run()
+# run()
