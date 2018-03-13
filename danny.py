@@ -1,6 +1,8 @@
 """Danny's collected data"""
-
 import util
+
+import pandas as p
+import matplotlib as plot
 
 def is_low_light(frame):
     """Microsoft's usability guidelines say that dim
@@ -21,7 +23,10 @@ def is_active(frame):
     via the sensors"""
     return (abs(frame[LAT_X_INDEX]) + abs(frame[LAT_Y_INDEX]) + abs(frame[LAT_Z_INDEX])) > 1
 
-def run(NUM):
+def run():
+    DATA = p.read_csv("DrivingData.csv", sep=";")
+    NUM = DATA.values
+    
     """Entry point and print the real metrics."""
     # The time column is the X axis for practically every graph
     TIME = column(NUM, TIME_INDEX)
