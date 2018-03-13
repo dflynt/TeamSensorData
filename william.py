@@ -7,23 +7,25 @@ import math
 
 LAccelX = 6
 LAccelY = 7
-Duration = 30
+Duration = 31
 
 
 # LINEAR_ACCEL_X =  6
 # LINEAR_ACCEL_Y = 7
 # TIME = 30
 
-df = pd.read_csv("DrivingData.csv", sep = ";")
+df = pd.read_csv("DrivingData.csv", sep = ",")
 
 def column(arr,lst):
     ret = []
+    print(len(arr))
     for i in range(0, len(arr)):
         ret.append(arr[i][lst])
     return ret
 
 def run():
     number = df.values
+    
     time = column(number, Duration)
     movement_time = []
     for frame in number:
@@ -33,5 +35,6 @@ def run():
     plt.title("Toal movement vs time.")
     plt.show()
     print(plt)
+run()
 
 
