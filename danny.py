@@ -1,4 +1,5 @@
 """Danny's collected data"""
+from util import column
 
 import pandas as p
 import matplotlib as plot
