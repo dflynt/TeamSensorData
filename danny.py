@@ -1,10 +1,6 @@
 """Danny's collected data"""
-<<<<<<< HEAD
-import util
-=======
 from util import column
 
->>>>>>> 61d17633bba957b62d05b75a3ef5529918568be3
 import pandas as p
 import matplotlib as plot
 
