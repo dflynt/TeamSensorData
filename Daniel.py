@@ -1,10 +1,11 @@
-import util
-
+import pandas as p
 def is_active(frame):
     return (abs(frame[LAT_X_INDEX]) + abs(frame[LAT_Y_INDEX]) +
             abs(frame[LAT_Z_INDEX])) > 1
 
-def run(NUM):
+def run():
+    DATA = p.read_csv("DrivingData.csv", sep=";")
+    NUM = DATA.values
     ACTIVE_TIME = [frame for frame in NUM if is_active(frame)]
 
     print("Of those frames when it was probably in a pocket, we probably" + 
@@ -15,4 +16,4 @@ def run(NUM):
     print("Which means there was an active percentage of " + 
             str((ACTIVE_TIME / TOTAL_ITME) * 100) + ".")
 
-    
+

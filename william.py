@@ -24,10 +24,7 @@ def column(arr,lst):
 
 def run():
     number = df.values
-
-
     time = column(number, Duration)
-
     movement_time = []
     for frame in number:
         movement_time.append((abs(frame[LAccelX]) + abs(frame[LAccelY])))
