@@ -16,13 +16,13 @@ ORIENTATION_Z_INDEX = 18
 
 PROXIMITY_INDEX = 19
 DECIBEL_INDEX = 20
-TIME_INDEX = 29
+TIME_INDEX = 31
 
 def column(arr, col):
     """Given a 2D array, give column n in a 1D array"""
     ret = []
-    for _, value in enumerate(arr)
-        ret.append(value[col])
+    for _, val in enumerate(arr):
+        ret.append(val[col])
     return ret
 
 def average(data, index):
