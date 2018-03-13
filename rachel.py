@@ -18,12 +18,14 @@ def runaccelmagovertime(DATA):
         plt.plot((DATA["Duration"]/1000), magnitude_column)
         plt.xlabel("Duration (Seconds)")
         plt.ylabel("Acceleration Magnitude Sensed")
+        plt.savefig("Acceleration_Mag_Over_Time.png")
         plt.show()
     except:
         print("Something went wrong with printing the plot in rachel.py...")
         # The next line is for debugging only, leave commented out for delivery
         print(traceback.format_exc())
     print("Acceleration Magnitude over Time plot attempt complete.\n")
+    print("If a plot did not disply, please check for Acceleration_Mag_Over_Time.png.")
     plt.gcf().clear()
 
 def run():
@@ -35,4 +37,4 @@ def run():
         print("There was an issue with reading in the data from rachel.py...")
 
 # Comment out when not using
-#run()
+# run()
