@@ -9,7 +9,7 @@ import csv as cs
 x = []
 y = []
 
-file_name = ".\DrivingData.csv"
+file_name = ".\\DrivingData.csv"
 
 with open(file_name) as csvfile:
     next(csvfile)
