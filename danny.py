@@ -64,7 +64,6 @@ def run(NUM):
     # Each frame is 500 milliseconds.
     ACTIVE_TIME = (500 * len(ACTIVE_TIME)) / 1000.0
 
-    print("The active time was " + str(ACTIVE_TIME) + ".")
 
     print("Which means there was an active percentage of " + str((ACTIVE_TIME / TOTAL_ITME) * 100) + ".")
 
