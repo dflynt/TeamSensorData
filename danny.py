@@ -66,10 +66,11 @@ def run(NUM):
 
     print("The active time was " + str(ACTIVE_TIME) + ".")
 
-    print("Which means there was an active percentage of " + str((ACTIVE_TIME / TOTAL_TIME) * 100) + ".")
+    print("Which means there was an active percentage of " + str((ACTIVE_TIME / TOTAL_ITME) * 100) + ".")
 
+    show_plots(NUM, TIME)
 
-def show_plots(NUM):
+def show_plots(NUM, TIME):
     """Display the data to be plotted"""
     # Plot various relevant metrics.
     plot.plot(TIME, column(NUM, LUX_INDEX))
