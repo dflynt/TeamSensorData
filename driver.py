@@ -7,11 +7,11 @@ import rachel
 import os
 
 def __init__():
-    #venkat.run()
-    #Daniel.run()
+    venkat.run()
+    Daniel.run()
     danny.run()
-    #colleen.run()
-    #william.run()
-    #rachel.run()
+    colleen.run()
+    william.run()
+    rachel.run()
 
 __init__()
