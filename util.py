@@ -18,10 +18,11 @@ PROXIMITY_INDEX = 19
 DECIBEL_INDEX = 20
 TIME_INDEX = 29
 
+
 def column(arr, col):
     """Given a 2D array, give column n in a 1D array"""
     ret = []
-    for _, value in enumerate(arr)
+    for value in enumerate(arr):
         ret.append(value[col])
     return ret
 
