@@ -1,8 +1,10 @@
 """Danny's collected data"""
-from util import column
+from util import *
 
 import pandas as p
-import matplotlib as plot
+import matplotlib.pyplot as plot
+
+
 
 def is_low_light(frame):
     """Microsoft's usability guidelines say that dim
@@ -24,9 +26,9 @@ def is_active(frame):
     return (abs(frame[LAT_X_INDEX]) + abs(frame[LAT_Y_INDEX]) + abs(frame[LAT_Z_INDEX])) > 1
 
 def run():
-    DATA = p.read_csv("DrivingData.csv", sep=";")
+    DATA = p.read_csv("DrivingData.csv")
     NUM = DATA.values
-    
+
     """Entry point and print the real metrics."""
     # The time column is the X axis for practically every graph
     TIME = column(NUM, TIME_INDEX)
@@ -70,7 +72,7 @@ def run():
     ACTIVE_TIME = (500 * len(ACTIVE_TIME)) / 1000.0
 
 
-    print("Which means there was an active percentage of " + str((ACTIVE_TIME / TOTAL_ITME) * 100) + ".")
+    print("Which means there was an active percentage of " + str((ACTIVE_TIME / TOTAL_TIME) * 100) + ".")
 
     show_plots(NUM, TIME)
 
@@ -91,20 +93,20 @@ def show_plots(NUM, TIME):
         MOVEMENT_SUMS.append((abs(sensor_frame[LAT_X_INDEX]) + abs(sensor_frame[LAT_Y_INDEX])
                               + abs(sensor_frame[LAT_Z_INDEX])))
 
-        plot.plot(TIME, MOVEMENT_SUMS)
-        plot.title("Total movement vs time.")
-        plot.show()
+    plot.plot(TIME, MOVEMENT_SUMS)
+    plot.title("Total movement vs time.")
+    plot.show()
 
-        # Just show a binary chart: either the user is active or the user is not,
-        # as determined by our threshhold that we decided on before.
-        ACTIVE = []
-        for sensor_frame in NUM:
-            if (abs(sensor_frame[LAT_X_INDEX]) + abs(sensor_frame[LAT_Y_INDEX])
-                + abs(sensor_frame[LAT_Z_INDEX])) > 1:
-                ACTIVE.append(1)
-            else:
-                ACTIVE.append(0)
+    # Just show a binary chart: either the user is active or the user is not,
+    # as determined by our threshhold that we decided on before.
+    ACTIVE = []
+    for sensor_frame in NUM:
+        if (abs(sensor_frame[LAT_X_INDEX]) + abs(sensor_frame[LAT_Y_INDEX])
+            + abs(sensor_frame[LAT_Z_INDEX])) > 1:
+            ACTIVE.append(1)
+        else:
+            ACTIVE.append(0)
 
-        plot.bar(TIME, ACTIVE)
-        plot.title("Blocks of active time.")
-        plot.show()
+    plot.bar(TIME, ACTIVE)
+    plot.title("Blocks of active time.")
+    plot.show()
