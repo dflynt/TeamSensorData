@@ -7,7 +7,7 @@ import math
 
 LAccelX = 6
 LAccelY = 7
-Duration = 30
+Duration = 31
 
 
 # LINEAR_ACCEL_X =  6
