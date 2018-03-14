@@ -5,12 +5,8 @@ import matplotlib.pyplot as plt
 # Change this to point to your specific AndroSensor CSV file
 FILE_LOCATION = ".\\DrivingData.csv"
 
-<<<<<<< HEAD
 
-def runaccelmagovertime(DATA):
-=======
 def runaccelmagovertime(data):
->>>>>>> 259c19013c916a979fcb2ce656262abe6d2f51e8
     try:
         # abs(Magnitude) = sqrt(x^2 + y^2 + z^2)
         magnitude_x_column = numpy.square(data["AccelX"])
@@ -29,20 +25,14 @@ def runaccelmagovertime(data):
         print("Something went wrong with printing the plot in rachel.py...")
         # The next line is for debugging only, leave commented out for delivery
         print(traceback.format_exc())
-<<<<<<< HEAD
-    print("Acceleration Magnitude over Time plot attempt complete.\n")
-    print("If a plot did not disply, please check " +
-          "for Acceleration_Mag_Over_Time.png.")
-=======
     print("\nAcceleration Magnitude over Time plot attempt complete.")
-    print("If a plot did not disply, please check for Acceleration_Mag_Over_Time.png.")
->>>>>>> 259c19013c916a979fcb2ce656262abe6d2f51e8
+    print("If a plot did not disply, please check for " +
+          "Acceleration_Mag_Over_Time.png.")
     plt.gcf().clear()
 
 
 def run():
     try:
-<<<<<<< HEAD
         NAMES_LIST = ["AccelX", "AccelY", "AccelZ", "GravX", "GravY", "GravZ",
                       "LAccelX", "LAccelY", "LAccelZ", "GyroX", "GyroY",
                       "GyroZ", "Light", "MagX", "MagY", "MagZ", "OrienX",
@@ -53,11 +43,6 @@ def run():
         DATA = numpy.genfromtxt(FILE_LOCATION, delimiter=',',
                                 names=NAMES_LIST, skip_header=1)
         runaccelmagovertime(DATA)
-=======
-        names_list = ["AccelX", "AccelY", "AccelZ", "GravX", "GravY", "GravZ", "LAccelX", "LAccelY", "LAccelZ", "GyroX", "GyroY", "GyroZ", "Light", "MagX", "MagY", "MagZ", "OrienX", "OrienY", "OrienZ", "Proximity", "Pressure", "Sound", "Latitude", "Longitude", "Altitude", "GoogleAlt", "GoogleATM", "Speed", "Accuracy", "Orientation", "SatelliteCount", "Duration", "Date"]
-        data = numpy.genfromtxt(FILE_LOCATION, delimiter=',', names=names_list, skip_header=1)
-        runaccelmagovertime(data)
->>>>>>> 259c19013c916a979fcb2ce656262abe6d2f51e8
     except:
         print("There was an issue with reading in the data from rachel.py...")
 
