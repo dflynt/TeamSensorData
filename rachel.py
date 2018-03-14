@@ -1,22 +1,26 @@
+import traceback
 import numpy
 import matplotlib.pyplot as plt
-import traceback
 
 # Change this to point to your specific AndroSensor CSV file
 FILE_LOCATION = ".\\DrivingData.csv"
 
+<<<<<<< HEAD
 
 def runaccelmagovertime(DATA):
+=======
+def runaccelmagovertime(data):
+>>>>>>> 259c19013c916a979fcb2ce656262abe6d2f51e8
     try:
         # abs(Magnitude) = sqrt(x^2 + y^2 + z^2)
-        magnitude_x_column = numpy.square(DATA["AccelX"])
-        magnitude_y_column = numpy.square(DATA["AccelY"])
-        magnitude_z_column = numpy.square(DATA["AccelZ"])
+        magnitude_x_column = numpy.square(data["AccelX"])
+        magnitude_y_column = numpy.square(data["AccelY"])
+        magnitude_z_column = numpy.square(data["AccelZ"])
         magnitude_column = numpy.add(magnitude_x_column, magnitude_y_column)
         magnitude_column = numpy.add(magnitude_column, magnitude_z_column)
         magnitude_column = numpy.sqrt(magnitude_column)
 
-        plt.plot((DATA["Duration"]/1000), magnitude_column)
+        plt.plot((data["Duration"]/1000), magnitude_column)
         plt.xlabel("Duration (Seconds)")
         plt.ylabel("Acceleration Magnitude Sensed")
         plt.savefig("Acceleration_Mag_Over_Time.png")
@@ -25,14 +29,20 @@ def runaccelmagovertime(DATA):
         print("Something went wrong with printing the plot in rachel.py...")
         # The next line is for debugging only, leave commented out for delivery
         print(traceback.format_exc())
+<<<<<<< HEAD
     print("Acceleration Magnitude over Time plot attempt complete.\n")
     print("If a plot did not disply, please check " +
           "for Acceleration_Mag_Over_Time.png.")
+=======
+    print("\nAcceleration Magnitude over Time plot attempt complete.")
+    print("If a plot did not disply, please check for Acceleration_Mag_Over_Time.png.")
+>>>>>>> 259c19013c916a979fcb2ce656262abe6d2f51e8
     plt.gcf().clear()
 
 
 def run():
     try:
+<<<<<<< HEAD
         NAMES_LIST = ["AccelX", "AccelY", "AccelZ", "GravX", "GravY", "GravZ",
                       "LAccelX", "LAccelY", "LAccelZ", "GyroX", "GyroY",
                       "GyroZ", "Light", "MagX", "MagY", "MagZ", "OrienX",
@@ -43,6 +53,11 @@ def run():
         DATA = numpy.genfromtxt(FILE_LOCATION, delimiter=',',
                                 names=NAMES_LIST, skip_header=1)
         runaccelmagovertime(DATA)
+=======
+        names_list = ["AccelX", "AccelY", "AccelZ", "GravX", "GravY", "GravZ", "LAccelX", "LAccelY", "LAccelZ", "GyroX", "GyroY", "GyroZ", "Light", "MagX", "MagY", "MagZ", "OrienX", "OrienY", "OrienZ", "Proximity", "Pressure", "Sound", "Latitude", "Longitude", "Altitude", "GoogleAlt", "GoogleATM", "Speed", "Accuracy", "Orientation", "SatelliteCount", "Duration", "Date"]
+        data = numpy.genfromtxt(FILE_LOCATION, delimiter=',', names=names_list, skip_header=1)
+        runaccelmagovertime(data)
+>>>>>>> 259c19013c916a979fcb2ce656262abe6d2f51e8
     except:
         print("There was an issue with reading in the data from rachel.py...")
 
