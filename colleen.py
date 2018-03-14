@@ -1,3 +1,9 @@
+import math
+import os
+import pandas as pd
+import matplotlib
+import matplotlib.pyplot as plt
+matplotlib.use('Agg')
 '''
 A program that extracts information from the data gathered
 from AndroSenser.
@@ -11,15 +17,10 @@ work.
 Python 3.6
 '''
 
-import math
-import os
-import pandas as pd
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 CSV_FILE = os.path.join(DIR, 'DrivingData.csv')
+
 
 def calculate_stops(d_f, row):
     '''
@@ -36,6 +37,7 @@ def calculate_stops(d_f, row):
         else:
             stopped = False
     return number_of_stops
+
 
 def calculate_total_distance(d_f, row):
     '''
@@ -59,12 +61,13 @@ def calculate_total_distance(d_f, row):
         dlon = lon2 - lon1
         dlat = lat2 - lat1
 
-        calc_a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+        calc_a = math.sin(dlat / 2)**2 + math.cos(lat1) *
+        math.cos(lat2) * math.sin(dlon / 2)**2
         calc_c = 2 * math.atan2(math.sqrt(calc_a), math.sqrt(1 - calc_a))
-
         distance += radius * calc_c
 
     return distance
+
 
 def calculate_distances(d_f, row):
     '''
@@ -89,7 +92,8 @@ def calculate_distances(d_f, row):
         dlon = lon2 - lon1
         dlat = lat2 - lat1
 
-        calc_a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+        calc_a = math.sin(dlat / 2)**2 + math.cos(lat1) *
+        math.cos(lat2) * math.sin(dlon / 2)**2
         calc_c = 2 * math.atan2(math.sqrt(calc_a), math.sqrt(1 - calc_a))
 
         distance += radius * calc_c
@@ -97,13 +101,15 @@ def calculate_distances(d_f, row):
 
     return distances
 
+
 def print_features(time, number_of_stops, distance, average_light):
     '''
     Prints the features that were calculated.
     '''
-    print('\nTotal time: ' + str((time/(1000*60)%60)) + ' minutes')
+    print('\nTotal time: ' + str((time/(1000*60) % 60)) + ' minutes')
     print('Number of stops: ' + str(number_of_stops))
-    print('Distance travelled: ' + str(distance) + ' km or ' + str(distance * .621371) + ' miles')
+    print("Distance travelled: " + str(distance), end="")
+    print("km or " + str(distance * .621371) + " miles")
     print('Average Light: ' + str(average_light) + " lux\n")
 
 
@@ -120,6 +126,7 @@ def plot_distance(distances):
     plt.savefig(out_png, dpi=150)
     plt.clf()
 
+
 def plot_light(d_f, average_light):
     '''
     Creates a graph of the average light amount and compares it
@@ -133,6 +140,7 @@ def plot_light(d_f, average_light):
     out_png = 'light.png'
     plt.savefig(out_png, dpi=150)
     plt.clf()
+
 
 def run():
     '''

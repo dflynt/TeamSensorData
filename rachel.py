@@ -5,6 +5,7 @@ import traceback
 # Change this to point to your specific AndroSensor CSV file
 FILE_LOCATION = ".\\DrivingData.csv"
 
+
 def runaccelmagovertime(DATA):
     try:
         # abs(Magnitude) = sqrt(x^2 + y^2 + z^2)
@@ -25,13 +26,22 @@ def runaccelmagovertime(DATA):
         # The next line is for debugging only, leave commented out for delivery
         print(traceback.format_exc())
     print("Acceleration Magnitude over Time plot attempt complete.\n")
-    print("If a plot did not disply, please check for Acceleration_Mag_Over_Time.png.")
+    print("If a plot did not disply, please check " +
+          "for Acceleration_Mag_Over_Time.png.")
     plt.gcf().clear()
+
 
 def run():
     try:
-        NAMES_LIST = ["AccelX", "AccelY", "AccelZ", "GravX", "GravY", "GravZ", "LAccelX", "LAccelY", "LAccelZ", "GyroX", "GyroY", "GyroZ", "Light", "MagX", "MagY", "MagZ", "OrienX", "OrienY", "OrienZ", "Proximity", "Pressure", "Sound", "Latitude", "Longitude", "Altitude", "GoogleAlt", "GoogleATM", "Speed", "Accuracy", "Orientation", "SatelliteCount", "Duration", "Date"]
-        DATA = numpy.genfromtxt(FILE_LOCATION, delimiter=',', names=NAMES_LIST, skip_header=1)
+        NAMES_LIST = ["AccelX", "AccelY", "AccelZ", "GravX", "GravY", "GravZ",
+                      "LAccelX", "LAccelY", "LAccelZ", "GyroX", "GyroY",
+                      "GyroZ", "Light", "MagX", "MagY", "MagZ", "OrienX",
+                      "OrienY", "OrienZ", "Proximity", "Pressure", "Sound",
+                      "Latitude", "Longitude", "Altitude", "GoogleAlt",
+                      "GoogleATM", "Speed", "Accuracy", "Orientation",
+                      "SatelliteCount", "Duration", "Date"]
+        DATA = numpy.genfromtxt(FILE_LOCATION, delimiter=',',
+                                names=NAMES_LIST, skip_header=1)
         runaccelmagovertime(DATA)
     except:
         print("There was an issue with reading in the data from rachel.py...")
